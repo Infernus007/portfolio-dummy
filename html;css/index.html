@@ -57,14 +57,17 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
   <script>
     gsap.from("nav",{duration: 2, ease: "none",opacity:0,x:-100,stagger:1.5});
-  gsap.to("#h1", {duration: 13, text: "I am infernus", ease: "none"});
+  function text(){
+    gsap.to("#h1", {duration: 3, text: "I am infernus", ease: "none"});
+  }
   $('body').append('<div style="display:flex;justify-content:center;align-items:center" id="loadingDiv"><div class="loader"><div class="words word-1"><span>I</span><span>N</span><span>F</span><span>E</span><span>R</span><span>N</span><span>U</span><span>S</span></div></div>');
 $(window).on('load', function(){
   setTimeout(removeLoader, 5000); //wait for page load PLUS two seconds.
 });
 function removeLoader(){
     $( "#loadingDiv" ).fadeOut(500, function() {
-      $( "#loadingDiv" ).remove();  
+      $( "#loadingDiv" ).remove();
+      text();  
   });  
 }
 
