@@ -21,18 +21,18 @@ ol[role=list] {
   list-style: none;
 }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
-}
 
 /* Make images easier to work with */
-img,
+img:not(.center-image > img),
 picture {
-  max-width: 100%;
+height:6em;
+width:6em;
   display: block;
+}
+
+.center-image > img{
+  display: block;
+max-width: 100%;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
@@ -78,6 +78,8 @@ body {
   min-height: 100vh;
   place-content: center;
   overflow: hidden;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
 img{
     border-radius: 20px;
@@ -99,7 +101,7 @@ img{
 .orbit .center-image img:not(:first-child):hover {
   opacity: 0;
 }
-.orbit ul {
+.orbit .tech-stack {
   display: grid;
   place-items: center;
   width: var(--size);
@@ -111,11 +113,11 @@ img{
   transform-origin: center;
   animation: orbit var(--speed) linear infinite;
 }
-.orbit ul:hover {
+.orbit .tech-stack:hover {
   animation-play-state: paused;
   --orbit-play-state: paused;
 }
-.orbit li {
+.orbit .stack-item {
   --icon-bg: pink;
   --text-bg: blue;
   position: absolute;
@@ -129,34 +131,34 @@ img{
   display: grid;
   place-items: center;
 }
-.orbit li:hover {
+.orbit .stack-item:hover {
   --throb-play-state: paused;
 }
-.orbit li:nth-child(1) {
+.orbit .stack-item:nth-child(1) {
   --throb-delay: 0ms;
 }
-.orbit li:nth-child(2) {
+.orbit .stack-item:nth-child(2) {
   --throb-delay: 500ms;
 }
-.orbit li:nth-child(3) {
+.orbit .stack-item:nth-child(3) {
   --throb-delay: 1000ms;
 }
-.orbit li:nth-child(4) {
+.orbit .stack-item:nth-child(4) {
   --throb-delay: 1500ms;
 }
-.orbit li:nth-child(5) {
+.orbit .stack-item:nth-child(5) {
   --throb-delay: 2000ms;
 }
-.orbit li:nth-child(6) {
+.orbit .stack-item:nth-child(6) {
   --throb-delay: 2500ms;
 }
-.orbit li:nth-child(7) {
+.orbit .stack-item:nth-child(7) {
   --throb-delay: 3000ms;
 }
-.orbit li:nth-child(8) {
+.orbit .stack-item:nth-child(8) {
   --throb-delay: 3500ms;
 }
-.orbit li > * {
+.orbit .stack-item > * {
   width: 100%;
   height: 100%;
   display: grid;
@@ -166,54 +168,54 @@ img{
   animation: orbit var(--speed) linear reverse infinite, throb 1s var(--throb-delay) ease-in-out infinite alternate;
   animation-play-state: var(--orbit-play-state, running), var(--throb-play-state, running);
 }
-.orbit li > div {
+.orbit .stack-item > div {
   background-color: var(--icon-bg);
 }
-.orbit li > p {
+.orbit .stack-item > p {
   background: var(--text-bg);
   transition: opacity 500ms;
   opacity: 0;
 }
-.orbit li:hover > p {
+.orbit .stack-item:hover > p {
   opacity: 1;
 }
-.orbit li:nth-child(1) {
+.orbit .stack-item:nth-child(1) {
   --icon-bg: var(--blue-light);
   --text-bg: var(--blue-dark);
   transform: translate(15rem, 0rem);
 }
-.orbit li:nth-child(2) {
+.orbit .stack-item:nth-child(2) {
   --icon-bg: var(--green-light);
   --text-bg: var(--green-dark);
   transform: translate(10rem, 10rem);
 }
-.orbit li:nth-child(3) {
+.orbit .stack-item:nth-child(3) {
 border-radius: 10em;
     --icon-bg: var(--pink-light);
   --text-bg: var(--pink-dark);
   transform: translate(0, 15rem);
 }
-.orbit li:nth-child(4) {
+.orbit .stack-item:nth-child(4) {
   --icon-bg: var(--red-light);
   --text-bg: var(--red-dark);
   transform: translate(-10rem, 10rem);
 }
-.orbit li:nth-child(5) {
+.orbit .stack-item:nth-child(5) {
   --icon-bg: var(--brown-light);
   --text-bg: var(--brown-dark);
   transform: translate(-15rem, 0rem);
 }
-.orbit li:nth-child(6) {
+.orbit .stack-item:nth-child(6) {
   --icon-bg: var(--yellow-light);
   --text-bg: var(--yellow-dark);
   transform: translate(-10rem, -10rem);
 }
-.orbit li:nth-child(7) {
+.orbit .stack-item:nth-child(7) {
   --icon-bg: var(--purple-light);
   --text-bg: var(--purple-dark);
   transform: translate(0, -15rem);
 }
-.orbit li:nth-child(8) {
+.orbit .stack-item:nth-child(8) {
   --icon-bg: var(--orange-light);
   --text-bg: var(--orange-dark);
   transform: translate(10rem, -10rem);
@@ -239,41 +241,67 @@ border-radius: 10em;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tech stack</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-
+  <nav class="navbar navbar-expand-lg mt-1 border border-dark rounded-pill fixed-top flex-fill d-flex navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">InfernusOO7</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left:80% ;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="dummy.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link transition-swipe" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="stack.html" aria-disabled="true">Tech Stack</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
   <div class="orbit">
     <div class="center-image">
       <img src="../images/webdev.png" alt="">    </div>
-    <ul>
-      <li>
+    <ul class="tech-stack">
+      <li class="stack-item">
         <div><img src="../images/bs.jpg" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/c++.png" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/java.png" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/js.jpg" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/pos.png" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/sass.png" alt=""></div>
       </li>
-      <li>
+      <li class="stack-item">
         <div><img src="../images/sql.png" alt=""></div>
       </li>
-      <li>
-        <div><img src="../images/sql.png" alt=""></div>
+      <li class="stack-item">
+        <div><img src="../images/html.png" alt=""></div>
       </li>
     </ul>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+  crossorigin="anonymous"></script>
 </body>
 </html>
 
